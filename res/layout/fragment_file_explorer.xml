@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dip" >
+
+    <LinearLayout
+        android:id="@+id/file_explorer_opr_ll"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal" >
+
+        <!-- 确定按钮 -->
+
+        <Button
+            android:id="@+id/file_explorer_okbtn"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_margin="1dip"
+            android:layout_weight="1"
+            android:text="@string/fileexplorer_okbtn" />
+
+        <!-- 取消按钮 -->
+
+        <Button
+            android:id="@+id/file_explorer_cancelbtn"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_margin="1dip"
+            android:layout_weight="1"
+            android:text="@string/fileexplorer_cancelbtn" />
+    </LinearLayout>
+
+    <!-- 上一层 -->
+
+    <TextView
+        android:id="@+id/file_explorer_up_tv"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dip"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip"
+        android:paddingTop="5dip"
+        android:text="@string/fileexplorer_uptv" />
+
+    <!-- 文件列表 -->
+
+    <ListView
+        android:id="@+id/file_explorer_ll"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/file_explorer_opr_ll"
+        android:layout_below="@+id/file_explorer_up_tv" >
+    </ListView>
+
+</RelativeLayout>

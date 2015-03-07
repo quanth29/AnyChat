@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dip" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <!-- 界面提示 -->
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/myprofile_tip" />
+
+        <!-- 当前登陆账户 -->
+
+        <TextView
+            android:id="@+id/myprofile_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dip"
+            android:layout_marginTop="10dip"
+            android:text="@string/myprofile_username" />
+
+        <!-- 昵称、JID及头像显示区 -->
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:id="@+id/myprofile_nameidrl"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="3" >
+
+                <EditText
+                    android:id="@+id/myprofile_nickname"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:hint="@string/myprofile_nickname"
+                    android:scrollHorizontally="true"
+                    android:singleLine="true" />
+
+                <EditText
+                    android:id="@+id/myprofile_jid"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/myprofile_nickname"
+                    android:ellipsize="end"
+                    android:hint="@string/myprofile_jid"
+                    android:scrollHorizontally="true"
+                    android:singleLine="true" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/myprofile_avator"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="2"
+                android:contentDescription="@string/app_name" />
+        </LinearLayout>
+
+        <!-- 姓名 -->
+
+        <LinearLayout
+            android:id="@+id/myprofile_name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/myprofile_firstname"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:ellipsize="end"
+                android:hint="@string/myprofile_fir_hint"
+                android:scrollHorizontally="true"
+                android:singleLine="true" />
+
+            <EditText
+                android:id="@+id/myprofile_midname"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:ellipsize="end"
+                android:hint="@string/myprofile_mid_hint"
+                android:scrollHorizontally="true"
+                android:singleLine="true" />
+
+            <EditText
+                android:id="@+id/myprofile_lastname"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:ellipsize="end"
+                android:hint="@string/myprofile_last_hint"
+                android:scrollHorizontally="true"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <!-- 工作电话 -->
+
+        <EditText
+            android:id="@+id/myprofile_workphone"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/myprofile_workphone"
+            android:inputType="phone"
+            android:scrollHorizontally="true"
+            android:singleLine="true" />
+
+        <!-- 家庭电话 -->
+
+        <EditText
+            android:id="@+id/myprofile_homephone"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/myprofile_homephone"
+            android:inputType="phone"
+            android:scrollHorizontally="true"
+            android:singleLine="true" />
+
+        <!-- 工作邮箱 -->
+
+        <EditText
+            android:id="@+id/myprofile_workemail"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/myprofile_workemail"
+            android:inputType="textWebEmailAddress"
+            android:scrollHorizontally="true"
+            android:singleLine="true" />
+
+        <!-- 家庭邮箱 -->
+
+        <EditText
+            android:id="@+id/myprofile_homeemail"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/myprofile_homeemail"
+            android:inputType="textWebEmailAddress"
+            android:scrollHorizontally="true"
+            android:singleLine="true" />
+
+        <!-- 组织（公司）名 -->
+
+        <EditText
+            android:id="@+id/myprofile_org"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/myprofile_org"
+            android:scrollHorizontally="true"
+            android:singleLine="true" />
+
+        <!-- 组织（公司）部门 -->
+
+        <EditText
+            android:id="@+id/myprofile_orgunit"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/myprofile_orgunit"
+            android:scrollHorizontally="true"
+            android:singleLine="true" />
+
+        <!-- 单位地址 -->
+
+        <EditText
+            android:id="@+id/myprofile_workaddr"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/myprofile_workaddr"
+            android:scrollHorizontally="true"
+            android:singleLine="true" />
+
+        <!-- 家庭地址 -->
+
+        <EditText
+            android:id="@+id/myprofile_homeaddr"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/myprofile_homeaddr"
+            android:scrollHorizontally="true"
+            android:singleLine="true" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <!-- 显示更多按钮 -->
+
+            <Button
+                android:id="@+id/myprofile_morebtn"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="@string/myprofile_morebtn_show" />
+            <!-- 保存按钮 -->
+
+            <Button
+                android:id="@+id/myprofile_savebtn"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="@string/myprofile_savebtn" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

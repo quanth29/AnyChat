@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="5dip" >
+
+    <!-- 提示文字 -->
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_new_confirm_tip" />
+
+    <!-- 组名选择列表 -->
+
+    <Spinner
+        android:id="@+id/add_new_confirm_sp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dip" />
+
+    <!-- 添加分组按钮 -->
+
+    <Button
+        android:id="@+id/add_new_confirm_add_group_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="@string/add_new_confirm_add_group" />
+
+    <!-- 添加新分组输入框和确定 -->
+
+    <RelativeLayout
+        android:id="@+id/add_new_confirm_new_group_rl"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" >
+
+        <!-- 添加新分组输入框 -->
+
+        <EditText
+            android:id="@+id/add_new_confirm_new_group_name_et"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/add_new_confirm_new_group_ok_btn"
+            android:ellipsize="end"
+            android:hint="@string/add_new_confirm_add_group_hint"
+            android:padding="5dip"
+            android:singleLine="true" />
+    </RelativeLayout>
+
+    <!-- 操作按钮 -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/add_new_confirm_ok_btn"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="5dip"
+            android:text="@string/add_new_confirm_ok" />
+
+        <Button
+            android:id="@+id/add_new_confirm_cancel_btn"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="5dip"
+            android:text="@string/add_new_confirm_cancel" />
+    </LinearLayout>
+
+</LinearLayout>
