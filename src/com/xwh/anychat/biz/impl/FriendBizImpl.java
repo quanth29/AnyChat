@@ -18,6 +18,7 @@ import android.content.Context;
 
 import com.xwh.anychat.biz.FriendBiz;
 import com.xwh.anychat.db.AnyChatDatabaseHelper;
+import com.xwh.anychat.entity.RosterEntity;
 import com.xwh.anychat.util.DebugUtil;
 import com.xwh.anychat.util.ServerConnectionUtil;
 
@@ -48,11 +49,14 @@ public class FriendBizImpl implements FriendBiz {
 
 	@Override
 	public void updateRosterListInfo(Context context, Roster roster, String username) {
+		if (databaseHelper == null) {
+			databaseHelper = AnyChatDatabaseHelper.getInstance(context);
+		}
 		Collection<RosterGroup> groupList = roster.getGroups();
 		for (RosterGroup rosterGroup : groupList) {
 			Collection<RosterEntry> rosterList = rosterGroup.getEntries();
 			for (RosterEntry rosterEntry : rosterList) {
-				// rosterEntry.
+				databaseHelper.addOrUpdateRosterInfo(username, rosterEntry);
 			}
 		}
 	}
@@ -96,5 +100,13 @@ public class FriendBizImpl implements FriendBiz {
 		} catch (Exception e) {
 			return false;
 		}
+	}
+
+	@Override
+	public RosterEntity getAllRoster(Context context, String username) {
+		if (databaseHelper == null) {
+			databaseHelper = AnyChatDatabaseHelper.getInstance(context);
+		}
+		return databaseHelper.getAllStoredRosterList(username);
 	}
 }

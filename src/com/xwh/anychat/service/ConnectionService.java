@@ -14,6 +14,7 @@ import com.xwh.anychat.fragment.AddNewFriendConfirmDialogFragment;
 import com.xwh.anychat.fragment.FriendsFragment;
 import com.xwh.anychat.fragment.MainFragment;
 import com.xwh.anychat.listener.MessagePacketListener;
+import com.xwh.anychat.listener.RosterChangeListener;
 import com.xwh.anychat.util.DebugUtil;
 import com.xwh.anychat.util.DeviceInfoUtil;
 import com.xwh.anychat.util.ServerConnectionUtil;
@@ -28,6 +29,7 @@ import android.os.Message;
 public class ConnectionService extends Service {
 
 	private MessagePacketListener messagePacketListener;
+	private RosterChangeListener rosterChangeListener;
 	public static serviceHandler handler;
 
 	private AccountBiz accountBiz;
@@ -47,6 +49,7 @@ public class ConnectionService extends Service {
 		accountBiz = new AccountBizImpl();
 		friendBiz = new FriendBizImpl();
 		messagePacketListener = new MessagePacketListener();
+		rosterChangeListener = new RosterChangeListener();
 	}
 
 	@Override
@@ -148,7 +151,12 @@ public class ConnectionService extends Service {
 					if (AddNewFriendConfirmDialogFragment.handler != null) {
 						AddNewFriendConfirmDialogFragment.handler.sendEmptyMessage(Constants.SERVICE_LOAD_MY_ROSTER_FINISH);
 					}
-					DebugUtil.Log("Refresh roster info over");
+					DebugUtil.Log("Refresh roster info over, set roster change listener now");
+					if (rosterChangeListener == null) {
+						rosterChangeListener = new RosterChangeListener();
+					}
+					SharedObj.roster.addRosterListener(rosterChangeListener);
+					DebugUtil.Log("Roster change listener is ready.");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

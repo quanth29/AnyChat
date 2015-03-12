@@ -66,6 +66,26 @@ public class Constants {
 	 * 文件管理器启动来源-头像
 	 */
 	public static final String FILE_EXPLORER_FROM_AVATOR = "avator";
+	
+	/**
+	 * 好友订阅状态-none
+	 */
+	public static final int SUBSCRIPTION_NONE=0x00;
+	
+	/**
+	 * 好友订阅状态-from
+	 */
+	public static final int SUBCRIPTION_FROM=0x01;
+	
+	/**
+	 * 好友订阅状态-to
+	 */
+	public static final int SUBCRIPTION_TO=0x02;
+	
+	/**
+	 * 好友订阅状态-both
+	 */
+	public static final int SUBCRIPTION_BOTH=0x03;
 
 	/**
 	 * 无活动的网络链接

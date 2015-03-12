@@ -2,6 +2,7 @@ package com.xwh.anychat.fragment;
 
 import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smackx.vcardtemp.packet.VCard;
+
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -18,8 +19,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.xwh.anychat.BaseActivity;
 import com.xwh.anychat.R;
+import com.xwh.anychat.SharedObj;
 import com.xwh.anychat.config.Constants;
 import com.xwh.anychat.util.ServerConnectionUtil;
 
@@ -98,7 +101,7 @@ public class VCardResultDialogFragment extends DialogFragment implements OnClick
 				orgTv.setText(vCard.getOrganization());
 				phoneTv.setText(vCard.getPhoneWork("CELL"));
 				emailTv.setText(vCard.getEmailWork());
-				if (userName.equals(xmppConnection.getUser().split("@")[0])) {
+				if (userName.equals(xmppConnection.getUser().split("@")[0]) || SharedObj.rosterEntity.contains((userName + "@" + xmppConnection.getServiceName()))) {
 					addToContactBtn.setVisibility(View.GONE);
 				} else {
 					addToContactBtn.setVisibility(View.VISIBLE);
@@ -134,7 +137,7 @@ public class VCardResultDialogFragment extends DialogFragment implements OnClick
 			if (addNewFriendConfirmDialogFragment == null) {
 				addNewFriendConfirmDialogFragment = new AddNewFriendConfirmDialogFragment();
 			}
-			Bundle bundle=new Bundle();
+			Bundle bundle = new Bundle();
 			bundle.putString(Constants.ADD_NEW_FRIEND_USERNAME, userName);
 			addNewFriendConfirmDialogFragment.setArguments(bundle);
 			addNewFriendConfirmDialogFragment.show(fragmentManager, "AddNewFriendConfirm");

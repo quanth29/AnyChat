@@ -1,9 +1,15 @@
 package com.xwh.anychat.fragment;
 
+import com.xwh.anychat.BaseActivity;
 import com.xwh.anychat.R;
+import com.xwh.anychat.SharedObj;
+import com.xwh.anychat.biz.FriendBiz;
+import com.xwh.anychat.biz.impl.FriendBizImpl;
 import com.xwh.anychat.config.Constants;
+import com.xwh.anychat.entity.RosterEntity;
 import com.xwh.anychat.service.ConnectionService;
 import com.xwh.anychat.util.DebugUtil;
+
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
@@ -26,6 +32,8 @@ public class FriendsFragment extends Fragment implements OnClickListener {
 	private FragmentManager fragmentManager;
 	private FragmentTransaction fragmentTransaction;
 
+	private FriendBiz friendBiz;
+
 	private SearchFriendFragment searchFriendFragment;
 
 	public static UIHandler handler;
@@ -43,8 +51,12 @@ public class FriendsFragment extends Fragment implements OnClickListener {
 		searchFriEt = (EditText) layoutView.findViewById(R.id.friends_fragment_searchEt);
 		addFriBtn = (Button) layoutView.findViewById(R.id.friends_fragment_addnewBtn);
 		addFriBtn.setOnClickListener(this);
+		friendBiz = new FriendBizImpl();
 		fragmentManager = getActivity().getSupportFragmentManager();
 		searchFriendFragment = new SearchFriendFragment();
+		if (SharedObj.rosterEntity == null) {
+			SharedObj.rosterEntity = new RosterEntity();
+		}
 		return layoutView;
 	}
 
@@ -56,7 +68,10 @@ public class FriendsFragment extends Fragment implements OnClickListener {
 
 	// 本地刷新好友列表信息
 	private void refreshRosterData() {
-
+		if (friendBiz == null) {
+			friendBiz = new FriendBizImpl();
+		}
+		SharedObj.rosterEntity.refreshData(friendBiz.getAllRoster(getActivity(), BaseActivity.username));
 	}
 
 	// 后台服务刷新好友列表信息

@@ -6,6 +6,8 @@ import java.util.List;
 import org.jivesoftware.smack.Roster;
 import org.jivesoftware.smackx.search.ReportedData.Row;
 
+import com.xwh.anychat.entity.RosterEntity;
+
 import android.content.Context;
 
 public interface FriendBiz {
@@ -65,4 +67,13 @@ public interface FriendBiz {
 	 */
 	public boolean addFriend(Context context, String username, String groupName);
 
+	/**
+	 * 获取保存到本地的好友列表
+	 * 
+	 * @param context
+	 * @param username
+	 * @return
+	 */
+	public RosterEntity getAllRoster(Context context,String username);
+	
 }
