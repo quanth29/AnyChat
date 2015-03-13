@@ -74,6 +74,25 @@ public class RosterEntity {
 	}
 
 	/**
+	 * 得到所有好友的JID
+	 * 
+	 * @return
+	 */
+	public ArrayList<String> getAllUserJId() {
+		ArrayList<String> allUserJIdStrs = new ArrayList<String>();
+		if (allRosterData != null && allRosterData.size() > 0) {
+			for (ArrayList<SingleRosterEntity> singleRosterEntities : allRosterData.values()) {
+				if (singleRosterEntities != null && singleRosterEntities.size() > 0) {
+					for (SingleRosterEntity singleRosterEntity : singleRosterEntities) {
+						allUserJIdStrs.add(singleRosterEntity.getUser());
+					}
+				}
+			}
+		}
+		return allUserJIdStrs;
+	}
+
+	/**
 	 * 判断一个用户是否在指定的组中
 	 * 
 	 * @param user

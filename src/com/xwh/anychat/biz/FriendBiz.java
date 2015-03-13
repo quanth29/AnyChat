@@ -74,6 +74,15 @@ public interface FriendBiz {
 	 * @param username
 	 * @return
 	 */
-	public RosterEntity getAllRoster(Context context,String username);
-	
+	public RosterEntity getAllRoster(Context context, String username);
+
+	/**
+	 * 本地移除不存在的好友
+	 * 
+	 * @param context
+	 * @param username
+	 * @param rosterEntity
+	 */
+	public void removeNotExistRoster(Context context, String username, RosterEntity rosterEntity);
+
 }

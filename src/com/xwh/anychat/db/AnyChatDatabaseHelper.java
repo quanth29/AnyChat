@@ -276,6 +276,28 @@ public class AnyChatDatabaseHelper extends SQLiteOpenHelper {
 	}
 
 	/**
+	 * 移除指定用户的指定好友
+	 * 
+	 * @param username
+	 * @param userJId
+	 */
+	public synchronized void removeRosterInfo(String username, String userJId) {
+		username = StrEncodeUtil.encodeForDBStore(username.getBytes());
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_ROSTER + "_" + username, null);
+		if (cursor == null || cursor.getCount() == 0) {
+			cursor.close();
+			return;
+		}
+		for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+			if (userJId.equals(new String(StrDecodeUtil.decodeForUIDisplay(cursor.getString(cursor.getColumnIndex(TABLE_ROSTER_USER)))))) {
+				db.delete(TABLE_ROSTER + "_" + username, TABLE_ROSTER_USER + "=\'" + new String(StrEncodeUtil.encodeForDBStore(userJId.getBytes())) + "\'", null);
+				return;
+			}
+		}
+	}
+
+	/**
 	 * 添加或更新好友列表
 	 * 
 	 * @param username

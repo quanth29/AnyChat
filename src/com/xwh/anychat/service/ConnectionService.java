@@ -145,6 +145,7 @@ public class ConnectionService extends Service {
 						friendBiz = new FriendBizImpl();
 					}
 					friendBiz.updateRosterListInfo(getApplicationContext(), SharedObj.roster, BaseActivity.username);
+					
 					if (FriendsFragment.handler != null) {
 						FriendsFragment.handler.sendEmptyMessage(Constants.SERVICE_LOAD_MY_ROSTER_FINISH);
 					}

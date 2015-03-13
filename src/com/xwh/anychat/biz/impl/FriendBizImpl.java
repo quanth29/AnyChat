@@ -52,6 +52,7 @@ public class FriendBizImpl implements FriendBiz {
 		if (databaseHelper == null) {
 			databaseHelper = AnyChatDatabaseHelper.getInstance(context);
 		}
+		// 添加及更新好友
 		Collection<RosterGroup> groupList = roster.getGroups();
 		for (RosterGroup rosterGroup : groupList) {
 			Collection<RosterEntry> rosterList = rosterGroup.getEntries();
@@ -108,5 +109,22 @@ public class FriendBizImpl implements FriendBiz {
 			databaseHelper = AnyChatDatabaseHelper.getInstance(context);
 		}
 		return databaseHelper.getAllStoredRosterList(username);
+	}
+
+	@Override
+	public void removeNotExistRoster(Context context, String username, RosterEntity rosterEntity) {
+		// 移除已删除的好友
+		if (databaseHelper == null) {
+			databaseHelper = AnyChatDatabaseHelper.getInstance(context);
+		}
+		ArrayList<String> allJId = databaseHelper.getAllStoredRosterList(username).getAllUserJId();
+		if (allJId != null && allJId.size() > 0 && rosterEntity != null) {
+			for (int i = 0; i < allJId.size(); i++) {
+				if (rosterEntity.contains(allJId.get(i))) {
+					DebugUtil.Log("Remove roster:" + allJId.get(i));
+					databaseHelper.removeRosterInfo(username, allJId.get(i));
+				}
+			}
+		}
 	}
 }
