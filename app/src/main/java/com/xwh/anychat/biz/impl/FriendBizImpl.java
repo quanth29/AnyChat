@@ -112,18 +112,17 @@ public class FriendBizImpl implements FriendBiz {
 	}
 
 	@Override
-	public void removeNotExistRoster(Context context, String username, RosterEntity rosterEntity) {
+	public void removeNotExistRoster(Context context, String username, Roster roster) {
 		// 移除已删除的好友
 		if (databaseHelper == null) {
 			databaseHelper = AnyChatDatabaseHelper.getInstance(context);
 		}
 		ArrayList<String> allJId = databaseHelper.getAllStoredRosterList(username).getAllUserJId();
-		if (allJId != null && allJId.size() > 0 && rosterEntity != null) {
+		if (allJId != null && allJId.size() > 0 && roster != null) {
 			for (int i = 0; i < allJId.size(); i++) {
-				if (rosterEntity.contains(allJId.get(i))) {
-					DebugUtil.Log("Remove roster:" + allJId.get(i));
-					databaseHelper.removeRosterInfo(username, allJId.get(i));
-				}
+                if(!roster.contains(allJId.get(i))){
+                    databaseHelper.removeRosterInfo(username, allJId.get(i));
+                }
 			}
 		}
 	}

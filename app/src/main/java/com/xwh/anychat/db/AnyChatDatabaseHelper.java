@@ -478,7 +478,7 @@ public class AnyChatDatabaseHelper extends SQLiteOpenHelper {
 	/**
 	 * 创建该用户应有的所有数据表
 	 * 
-	 * @param encodeForDBStore
+	 * @param userName
 	 */
 	public synchronized void prepareAccountDBData(String userName) {
 		SQLiteDatabase db = this.getReadableDatabase();

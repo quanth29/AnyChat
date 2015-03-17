@@ -144,8 +144,10 @@ public class ConnectionService extends Service {
 					if (friendBiz == null) {
 						friendBiz = new FriendBizImpl();
 					}
+                    DebugUtil.Log("Fetch roster data success, prepare to modify local data");
 					friendBiz.updateRosterListInfo(getApplicationContext(), SharedObj.roster, BaseActivity.username);
-					
+                    friendBiz.removeNotExistRoster(getApplicationContext(),BaseActivity.username,SharedObj.roster);
+                    DebugUtil.Log("Local data is up to date");
 					if (FriendsFragment.handler != null) {
 						FriendsFragment.handler.sendEmptyMessage(Constants.SERVICE_LOAD_MY_ROSTER_FINISH);
 					}

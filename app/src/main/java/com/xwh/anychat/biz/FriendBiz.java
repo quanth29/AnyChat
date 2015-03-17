@@ -35,7 +35,6 @@ public interface FriendBiz {
 	 * 
 	 * @param context
 	 * @param roster
-	 * @param username
 	 */
 	public List<String> getRosterGroupList(Context context, Roster roster);
 
@@ -81,8 +80,8 @@ public interface FriendBiz {
 	 * 
 	 * @param context
 	 * @param username
-	 * @param rosterEntity
+	 * @param roster
 	 */
-	public void removeNotExistRoster(Context context, String username, RosterEntity rosterEntity);
+	public void removeNotExistRoster(Context context, String username, Roster roster);
 
 }

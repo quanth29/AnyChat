@@ -14,7 +14,7 @@ public class RosterChangeListener implements RosterListener {
 	@Override
 	public void entriesAdded(Collection<String> addresses) {
 		DebugUtil.Log("roster added");
-		ConnectionService.handler.sendEmptyMessage(Constants.SERVICE_LOAD_MY_ROSTER_START);
+//		ConnectionService.handler.sendEmptyMessage(Constants.SERVICE_LOAD_MY_ROSTER_START);
 	}
 
 	@Override
@@ -26,7 +26,7 @@ public class RosterChangeListener implements RosterListener {
 	@Override
 	public void entriesDeleted(Collection<String> addresses) {
 		DebugUtil.Log("roster deleted");
-		ConnectionService.handler.sendEmptyMessage(Constants.SERVICE_LOAD_MY_ROSTER_START);
+//		ConnectionService.handler.sendEmptyMessage(Constants.SERVICE_LOAD_MY_ROSTER_START);
 	}
 
 	@Override

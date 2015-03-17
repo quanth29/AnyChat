@@ -71,7 +71,6 @@ public class FriendsFragment extends Fragment implements OnClickListener {
 		if (friendBiz == null) {
 			friendBiz = new FriendBizImpl();
 		}
-		friendBiz.removeNotExistRoster(getActivity(), BaseActivity.username, SharedObj.rosterEntity);
 		SharedObj.rosterEntity.refreshData(friendBiz.getAllRoster(getActivity(), BaseActivity.username));
 	}
 
