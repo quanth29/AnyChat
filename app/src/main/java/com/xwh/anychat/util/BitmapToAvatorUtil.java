@@ -1,5 +1,8 @@
 package com.xwh.anychat.util;
 
+/**
+ * Created by 萧文翰 on 2015/3/18.
+ */
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;

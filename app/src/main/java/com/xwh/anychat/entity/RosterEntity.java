@@ -1,5 +1,8 @@
 package com.xwh.anychat.entity;
 
+/**
+ * Created by 萧文翰 on 2015/3/18.
+ */
 import java.util.ArrayList;
 import java.util.HashMap;
 

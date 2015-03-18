@@ -1,5 +1,8 @@
 package com.xwh.anychat.util;
 
+/**
+ * Created by 萧文翰 on 2015/3/18.
+ */
 public class StrDecodeUtil {
 	public static final String HEX_STRING = "0123456789ABCDEF";
 

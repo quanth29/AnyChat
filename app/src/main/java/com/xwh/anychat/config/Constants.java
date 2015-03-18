@@ -1,5 +1,8 @@
 package com.xwh.anychat.config;
 
+/**
+ * Created by 萧文翰 on 2015/3/18.
+ */
 public class Constants {
 
 	/**

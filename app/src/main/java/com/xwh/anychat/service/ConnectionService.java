@@ -1,5 +1,8 @@
 package com.xwh.anychat.service;
 
+/**
+ * Created by 萧文翰 on 2015/3/18.
+ */
 import android.annotation.SuppressLint;
 import android.app.Service;
 import android.content.Intent;

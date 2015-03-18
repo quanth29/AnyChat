@@ -1,5 +1,8 @@
 package com.xwh.anychat.listener;
 
+/**
+ * Created by 萧文翰 on 2015/3/18.
+ */
 import com.xwh.anychat.config.Constants;
 import com.xwh.anychat.service.ConnectionService;
 import com.xwh.anychat.util.DebugUtil;

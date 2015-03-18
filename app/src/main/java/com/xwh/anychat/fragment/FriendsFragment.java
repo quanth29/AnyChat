@@ -1,5 +1,8 @@
 package com.xwh.anychat.fragment;
 
+/**
+ * Created by 萧文翰 on 2015/3/18.
+ */
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
@@ -38,10 +41,13 @@ public class FriendsFragment extends Fragment implements OnClickListener {
 
 	public static UIHandler handler;
 
+    private boolean isFetchRosterData;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		handler = new UIHandler();
+        refreshRosterData();
 		reloadRosterData();
 	}
 
@@ -63,7 +69,12 @@ public class FriendsFragment extends Fragment implements OnClickListener {
 	@Override
 	public void onResume() {
 		super.onResume();
-		refreshRosterData();
+        //如果没有处于同步好友状态，则刷新好友列表，否则，等待同步完成后会有Handler处理刷新
+        if(!isFetchRosterData){
+            DebugUtil.Log("We need to reload roster data from local database now");
+            refreshRosterData();
+            DebugUtil.Log("Reload roster data finish");
+        }
 	}
 
 	// 本地刷新好友列表信息
@@ -76,6 +87,7 @@ public class FriendsFragment extends Fragment implements OnClickListener {
 
 	// 后台服务刷新好友列表信息
 	private void reloadRosterData() {
+        isFetchRosterData=true;
 		ConnectionService.handler.sendEmptyMessage(Constants.SERVICE_LOAD_MY_ROSTER_START);
 	}
 
@@ -86,7 +98,9 @@ public class FriendsFragment extends Fragment implements OnClickListener {
 			super.handleMessage(msg);
 			switch (msg.what) {
 			case Constants.SERVICE_LOAD_MY_ROSTER_FINISH:
-
+                //同步好友信息完毕，从刚更新的好友信息中读取（本地数据库）
+                isFetchRosterData=false;
+                refreshRosterData();
 				break;
 
 			default:

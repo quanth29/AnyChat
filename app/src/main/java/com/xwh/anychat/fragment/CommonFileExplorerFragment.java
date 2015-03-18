@@ -1,5 +1,8 @@
 package com.xwh.anychat.fragment;
 
+/**
+ * Created by 萧文翰 on 2015/3/18.
+ */
 import android.os.Bundle;
 import android.os.Message;
 import android.support.v4.app.Fragment;

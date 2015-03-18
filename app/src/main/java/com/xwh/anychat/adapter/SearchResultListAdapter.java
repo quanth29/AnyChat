@@ -1,5 +1,8 @@
 package com.xwh.anychat.adapter;
 
+/**
+ * Created by 萧文翰 on 2015/3/18.
+ */
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

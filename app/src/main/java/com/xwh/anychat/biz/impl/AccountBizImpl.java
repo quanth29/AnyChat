@@ -1,5 +1,8 @@
 package com.xwh.anychat.biz.impl;
 
+/**
+ * Created by 萧文翰 on 2015/3/18.
+ */
 import android.content.Context;
 
 import com.xwh.anychat.biz.AccountBiz;

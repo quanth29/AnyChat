@@ -1,5 +1,8 @@
 package com.xwh.anychat.fragment;
 
+/**
+ * Created by 萧文翰 on 2015/3/18.
+ */
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
