@@ -20,6 +20,5 @@ android {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:22.0.0'
-    compile files('E:/Project/Android_Studio/AnyChat/doc/asmack-android-8-4.0.6.jar')
-    compile files('E:/Document/GitHub/AnyChat/AnyChat/doc/asmack-android-8-4.0.6.jar')
+    compile files('C:/Users/萧文翰/Documents/GitHub/AnyChat/doc/asmack-android-8-4.0.6.jar')
 }
