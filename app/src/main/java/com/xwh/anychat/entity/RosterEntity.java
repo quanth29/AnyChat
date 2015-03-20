@@ -5,10 +5,12 @@ package com.xwh.anychat.entity;
  */
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 public class RosterEntity {
 
 	private HashMap<String, ArrayList<SingleRosterEntity>> allRosterData;
+    private ArrayList<GroupRosterEntity> allRosterDataForAdapter;
 
 	public RosterEntity() {
 		super();
@@ -121,6 +123,54 @@ public class RosterEntity {
 		return false;
 	}
 
+    //从现有的RosterEntity对象中生成用于适配器的数据源（不会生成新对象，只有一个ArrayList反复重用）
+    public ArrayList<GroupRosterEntity> genRosterDataForAdapter(){
+        if(allRosterDataForAdapter==null){
+            allRosterDataForAdapter=new ArrayList<GroupRosterEntity>();
+        }
+        allRosterDataForAdapter.clear();
+        if(this.allRosterData!=null){
+            Set<String> groupNames=allRosterData.keySet();
+            for(String groupName:groupNames){
+                allRosterDataForAdapter.add(new GroupRosterEntity(groupName,allRosterData.get(groupName)));
+            }
+        }
+        return allRosterDataForAdapter;
+    }
+
+    //一组好友
+    public class GroupRosterEntity {
+
+        private String groupName;
+        private ArrayList<SingleRosterEntity> singleRosterList;
+
+        public GroupRosterEntity() {
+            super();
+        }
+
+        public GroupRosterEntity(String groupName, ArrayList<SingleRosterEntity> singleRosterList) {
+            this.groupName = groupName;
+            this.singleRosterList = singleRosterList;
+        }
+
+        public String getGroupName() {
+            return groupName;
+        }
+
+        public ArrayList<SingleRosterEntity> getSingleRosterList() {
+            return singleRosterList;
+        }
+
+        public void setGroupName(String groupName) {
+            this.groupName = groupName;
+        }
+
+        public void setSingleRosterList(ArrayList<SingleRosterEntity> singleRosterList) {
+            this.singleRosterList = singleRosterList;
+        }
+    }
+
+    //单个好友
 	public class SingleRosterEntity {
 
 		private String name;

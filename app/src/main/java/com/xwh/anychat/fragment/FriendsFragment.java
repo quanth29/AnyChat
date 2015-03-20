@@ -16,10 +16,12 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ExpandableListView;
 
 import com.xwh.anychat.BaseActivity;
 import com.xwh.anychat.R;
 import com.xwh.anychat.SharedObj;
+import com.xwh.anychat.adapter.FriendListAdapter;
 import com.xwh.anychat.biz.FriendBiz;
 import com.xwh.anychat.biz.impl.FriendBizImpl;
 import com.xwh.anychat.config.Constants;
@@ -27,10 +29,13 @@ import com.xwh.anychat.entity.RosterEntity;
 import com.xwh.anychat.service.ConnectionService;
 import com.xwh.anychat.util.DebugUtil;
 
+import java.util.ArrayList;
+
 public class FriendsFragment extends Fragment implements OnClickListener {
 
 	private EditText searchFriEt;
 	private Button addFriBtn;
+    private ExpandableListView friendListEl;
 
 	private FragmentManager fragmentManager;
 	private FragmentTransaction fragmentTransaction;
@@ -42,6 +47,9 @@ public class FriendsFragment extends Fragment implements OnClickListener {
 	public static UIHandler handler;
 
     private boolean isFetchRosterData;
+    private FriendListAdapter friendListAdapter;
+
+    private ArrayList<RosterEntity.GroupRosterEntity> rosterDataForShow;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -56,6 +64,7 @@ public class FriendsFragment extends Fragment implements OnClickListener {
 		View layoutView = inflater.inflate(R.layout.fragment_friends, container, false);
 		searchFriEt = (EditText) layoutView.findViewById(R.id.friends_fragment_searchEt);
 		addFriBtn = (Button) layoutView.findViewById(R.id.friends_fragment_addnewBtn);
+        friendListEl=(ExpandableListView)layoutView.findViewById(R.id.friend_fragment_frilistElv);
 		addFriBtn.setOnClickListener(this);
 		friendBiz = new FriendBizImpl();
 		fragmentManager = getActivity().getSupportFragmentManager();
@@ -83,6 +92,13 @@ public class FriendsFragment extends Fragment implements OnClickListener {
 			friendBiz = new FriendBizImpl();
 		}
 		SharedObj.rosterEntity.refreshData(friendBiz.getAllRoster(getActivity(), BaseActivity.username));
+        rosterDataForShow=SharedObj.rosterEntity.genRosterDataForAdapter();
+        if(friendListAdapter==null){
+            friendListAdapter=new FriendListAdapter(getActivity(),rosterDataForShow);
+            friendListEl.setAdapter(friendListAdapter);
+        }else {
+            friendListAdapter.notifyDataSetChanged();
+        }
 	}
 
 	// 后台服务刷新好友列表信息
