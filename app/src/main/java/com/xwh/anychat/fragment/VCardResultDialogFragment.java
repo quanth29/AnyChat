@@ -95,7 +95,7 @@ public class VCardResultDialogFragment extends DialogFragment implements OnClick
 			switch (msg.what) {
 			case Constants.VCARD_LOAD_OK:
 				if (vCard.getAvatar() == null) {
-					avatorIv.setImageResource(R.drawable.ic_launcher);
+					avatorIv.setImageResource(R.mipmap.ic_launcher);
 				} else {
 					avator = null;
 					avator = BitmapFactory.decodeByteArray(vCard.getAvatar(), 0, vCard.getAvatar().length);

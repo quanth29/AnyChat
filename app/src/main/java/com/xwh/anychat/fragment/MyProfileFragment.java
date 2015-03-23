@@ -121,7 +121,7 @@ public class MyProfileFragment extends Fragment implements OnClickListener {
 		nicknameEt.setText(accountInfo.getNickName());
 		jIdEt.setText(accountInfo.getjID());
 		if (avator == null) {
-			avatorIv.setImageResource(R.drawable.ic_launcher);
+			avatorIv.setImageResource(R.mipmap.ic_launcher);
 		} else {
 			avatorIv.setImageBitmap(avator);
 		}
