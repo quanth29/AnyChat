@@ -23,4 +23,5 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:22.0.0'
     compile files('C:/Users/萧文翰/Documents/GitHub/AnyChat/AnyChat/doc/asmack-android-8-4.0.6.jar')
+    compile files('C:/Users/萧文翰/Documents/GitHub/AnyChat/AnyChat/AnyChat/doc/asmack-android-8-4.0.6.jar')
 }
