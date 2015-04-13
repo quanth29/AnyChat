@@ -5,6 +5,7 @@ package com.xwh.anychat.fragment;
  */
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Debug;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
@@ -55,7 +56,6 @@ public class FriendsFragment extends Fragment implements OnClickListener {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		handler = new UIHandler();
-        refreshRosterData();
 		reloadRosterData();
 	}
 
@@ -72,6 +72,7 @@ public class FriendsFragment extends Fragment implements OnClickListener {
 		if (SharedObj.rosterEntity == null) {
 			SharedObj.rosterEntity = new RosterEntity();
 		}
+        refreshRosterData();
 		return layoutView;
 	}
 
@@ -91,6 +92,9 @@ public class FriendsFragment extends Fragment implements OnClickListener {
 		if (friendBiz == null) {
 			friendBiz = new FriendBizImpl();
 		}
+        if (SharedObj.rosterEntity == null) {
+            SharedObj.rosterEntity = new RosterEntity();
+        }
 		SharedObj.rosterEntity.refreshData(friendBiz.getAllRoster(getActivity(), BaseActivity.username));
         rosterDataForShow=SharedObj.rosterEntity.genRosterDataForAdapter();
         if(friendListAdapter==null){

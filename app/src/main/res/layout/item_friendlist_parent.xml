@@ -5,6 +5,7 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:layout_marginLeft="20dip"
         android:id="@+id/friendlist_parent_tv"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
